@@ -11,8 +11,6 @@ import page.objects.SentObjects;
 
 public class SentPage {
 
-    final public String SENT_URL = "https://outlook.live.com/mail/0/sentitems";
-
     WebDriver driver;
     WebDriverWait wait;
     InboxObjects inboxObjects;

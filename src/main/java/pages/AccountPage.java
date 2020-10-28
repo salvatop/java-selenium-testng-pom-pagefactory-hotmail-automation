@@ -7,7 +7,6 @@ import page.objects.AccountObjects;
 
 public class AccountPage {
 
-    final public String ACCOUNT_URL = "https://account.microsoft.com/";
     AccountObjects accountObjects;
     WebDriver driver;
 

@@ -3,12 +3,15 @@
 
 <suite name = "AcumaticaSuite">
     <parameter name = "browser" value="chrome"/>
+    <parameter name = "isFileLoggerEnabled" value="true"/>
     <test name = "Test Login" parallel="false" preserve-order="true">
         <classes>
             <class name = "LoginPageTest">
                     <methods>
                         <parameter name = "username" value="automatedtestinjava@hotmail.com"/>
                         <parameter name = "password" value="123.Password.123"/>
+                        <parameter name = "loginUrl" value="https://login.live.com/"/>
+                        <parameter name = "accountUrl" value="https://account.microsoft.com/"/>
                          <exclude name="testLoginWithCorrectCredentials"/>
                     </methods>
             </class>
@@ -23,6 +26,8 @@
                     <parameter name = "password" value="123.Password.123"/>
                     <parameter name = "subject" value="Acumatica"/>
                     <parameter name = "body" value="this is the body"/>
+                    <parameter name = "loginUrl" value="https://login.live.com/"/>
+                    <parameter name = "accountUrl" value="https://account.microsoft.com/"/>
                     <exclude name="sendEmail"/>
                 </methods>
             </class>
@@ -36,7 +41,9 @@
                     <parameter name = "username" value="automatedtestinjava@hotmail.com"/>
                     <parameter name = "password" value="123.Password.123"/>
                     <parameter name = "subject" value="Acumatica"/>
-                    <exclude name="testReceiveEmail"/>
+                    <parameter name = "loginUrl" value="https://login.live.com/"/>
+                    <parameter name = "sentUrl" value="https://outlook.live.com/mail/0/sentitems"/>
+                    <include name="testReceiveEmail"/>
                 </methods>
             </class>
         </classes>

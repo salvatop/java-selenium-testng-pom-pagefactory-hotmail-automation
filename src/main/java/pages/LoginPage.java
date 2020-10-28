@@ -5,19 +5,19 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import page.objects.LoginObjects;
 
 public class LoginPage  {
 
-    final public String LOGIN_URL = "https://login.live.com/";
-
-    /** The login page. */
     LoginObjects loginObjects;
     WebDriver driver;
+    WebDriverWait wait;
 
     public LoginPage(WebDriver driver){
         this.driver = driver;
         loginObjects = PageFactory.initElements(driver, LoginObjects.class);
+        wait = new WebDriverWait(driver,5, 500);
     }
 
     public void fillIn(WebElement element, String text){
@@ -29,17 +29,11 @@ public class LoginPage  {
     }
 
     public void login(String username,String password){
-        WebDriverWait wait = new WebDriverWait(driver,5, 500);
-        driver.get(LOGIN_URL);
-        System.out.println("Enter username:" + username);
         fillIn(loginObjects.txtUsername, username);
         click(loginObjects.btnNext);
-
         wait.until(ExpectedConditions.elementToBeClickable(loginObjects.txtPassword));
-        System.out.println("Enter password:" + password);
         fillIn(loginObjects.txtPassword, password);
         wait.until(ExpectedConditions.elementToBeClickable(loginObjects.btnNext)).click();
-        System.out.println("Confirm to stay logged it and click next");
         wait.until(ExpectedConditions.visibilityOf(loginObjects.lblStaySignedIn));
         wait.until(ExpectedConditions.elementToBeClickable(loginObjects.btnNext)).click();
     }

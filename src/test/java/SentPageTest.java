@@ -4,7 +4,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
@@ -13,6 +12,10 @@ import pages.AccountPage;
 import pages.InboxPage;
 import pages.LoginPage;
 import pages.SentPage;
+
+import java.io.IOException;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
 
 
 public class SentPageTest {
@@ -23,17 +26,28 @@ public class SentPageTest {
     InboxPage inboxPage;
     AccountPage accountPage;
     SentPage sentPage;
+    Logger logger;
 
-    @Parameters({"browser"})
     @BeforeSuite
-    public void setUp(String browser) {
-        Reporter.log("TestNG is launching the browser driver");
+    @Parameters({"browser", "isFileLoggerEnabled"})
+    public void setUp(String browser, String isFileLoggerEnabled) throws IOException {
         this.driver = Browser.getDriver(browser);
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         inboxPage = PageFactory.initElements(driver, InboxPage.class);
         accountPage = PageFactory.initElements(driver, AccountPage.class);
         sentPage = PageFactory.initElements(driver, SentPage.class);
         wait = new WebDriverWait(driver,5, 500);
+
+        if(isFileLoggerEnabled.equals("true")) {
+            boolean append = true;
+            FileHandler handler = new FileHandler("SentPageTest.txt", append);
+            logger = java.util.logging.Logger.getLogger("SentPageTest.class");
+            logger.addHandler(handler);
+        } else {
+            logger = Logger.getLogger("SentPageTest.class");
+        }
+
+        logger.info("Launching the browser driver");
     }
     @AfterSuite
     public void tearDown(){
@@ -42,16 +56,16 @@ public class SentPageTest {
         }
     }
 
-    @Parameters({"username", "password", "subject", "body"})
-    @Test
-    public void sendEmail(String username, String password, String subject, String body) throws InterruptedException {
+    @Test(groups="send")
+    @Parameters({"username", "password", "subject", "body", "accountUrl", "inboxUrl"})
+    public void sendEmail(String username, String password, String subject, String body, String accountUrl, String inboxUrl) {
         loginPage.login(username, password);
 
-        driver.get(accountPage.ACCOUNT_URL);
+        driver.get(accountUrl);
         wait.until(ExpectedConditions.visibilityOf(accountPage.getEmailWebElement()));
         Assert.assertEquals(accountPage.getEmailText(), username);
 
-        driver.get(inboxPage.INBOX_URL);
+        driver.get(inboxUrl);
         sentPage.createNewMessageAndSendIt(username, subject, body);
         //TODO - re-enable the assertion after resolved the bug on the dynamic waiter
         //Assert.assertTrue(sentPage.verifyMessageIsSent(subject));
