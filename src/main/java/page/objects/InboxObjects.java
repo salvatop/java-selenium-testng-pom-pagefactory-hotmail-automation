@@ -6,10 +6,10 @@ import org.openqa.selenium.support.How;
 
 public class InboxObjects {
 
-    @FindBy(how = How.XPATH,using = "//*[@id = 'id__5']")
-    public WebElement newMessageButton;
+    @FindBy(how = How.XPATH,using = "//*[contains(text(), 'Account manager')]")
+    public WebElement showLogoutButton;
 
-    @FindBy(how = How.XPATH,using = "//*[@id = 'id__5']")
+    @FindBy(how = How.XPATH,using = "//*[contains(text(), 'Sign out')]")
     public WebElement logoutButton;
 
 }

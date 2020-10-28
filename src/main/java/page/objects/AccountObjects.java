@@ -6,6 +6,6 @@ import org.openqa.selenium.support.How;
 
 public class AccountObjects {
 
-    @FindBy(how = How.XPATH,using = "//span[contains(text(), '@hotmail.com')]") //xml file
+    @FindBy(how = How.XPATH,using = "//span[contains(text(), '@hotmail.com')]")
     public WebElement accountEmail;
 }

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,18 +14,21 @@ public class InboxPage {
 
     InboxObjects inboxObjects;
     WebDriver driver;
+    WebDriverWait wait;
 
     public InboxPage(WebDriver driver){
         this.driver = driver;
+        wait = new WebDriverWait(driver,5, 500);
         inboxObjects = PageFactory.initElements(driver, InboxObjects.class);
     }
 
     public void logout(){
-        inboxObjects.logoutButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(inboxObjects.showLogoutButton)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(inboxObjects.logoutButton)).click();
     }
 
     public boolean verifyMessageWithSubjectIsReceived(String subject){
-
-        return false;
+        String xpath = "//*[contains(text()," + "'" + subject + "'" + ")]";
+        return driver.findElements(By.xpath(xpath)).size() != 0;
     }
 }

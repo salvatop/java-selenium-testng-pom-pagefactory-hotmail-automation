@@ -9,7 +9,7 @@
                     <methods>
                         <parameter name = "username" value="automatedtestinjava@hotmail.com"/>
                         <parameter name = "password" value="123.Password.123"/>
-                         <include name="testLoginWithCorrectCredentials"/>
+                         <exclude name="testLoginWithCorrectCredentials"/>
                     </methods>
             </class>
         </classes>
@@ -21,8 +21,21 @@
                 <methods>
                     <parameter name = "username" value="automatedtestinjava@hotmail.com"/>
                     <parameter name = "password" value="123.Password.123"/>
-                    <parameter name = "subject" value="test"/>
+                    <parameter name = "subject" value="Acumatica"/>
                     <parameter name = "body" value="this is the body"/>
+                    <exclude name="sendEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name = "Receive Email" parallel="false" preserve-order="true">
+        <classes>
+            <class name = "InboxPageTest">
+                <methods>
+                    <parameter name = "username" value="automatedtestinjava@hotmail.com"/>
+                    <parameter name = "password" value="123.Password.123"/>
+                    <parameter name = "subject" value="Acumatica"/>
                     <include name="sendEmail"/>
                 </methods>
             </class>

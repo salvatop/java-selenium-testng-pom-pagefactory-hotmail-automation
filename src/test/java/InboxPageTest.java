@@ -1,7 +1,6 @@
 import browser.Browser;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -33,8 +32,6 @@ public class InboxPageTest {
         inboxPage = PageFactory.initElements(driver, InboxPage.class);
         accountPage = PageFactory.initElements(driver, AccountPage.class);
         sentPage = PageFactory.initElements(driver, SentPage.class);
-
-
     }
     @AfterSuite
     public void tearDown(){
@@ -43,12 +40,10 @@ public class InboxPageTest {
         }
     }
 
-    @Parameters({"username", "password"})
     @Test
-    public void testReceiveEmail(String username, String password) {
-        String subject = "test";
+    @Parameters({"username", "password", "subject"})
+    public void testReceiveEmail(String username, String password, String subject) {
         loginPage.login(username, password);
-
         driver.get(sentPage.SENT_URL);
         Assert.assertTrue(inboxPage.verifyMessageWithSubjectIsReceived(subject));
         inboxPage.logout();
