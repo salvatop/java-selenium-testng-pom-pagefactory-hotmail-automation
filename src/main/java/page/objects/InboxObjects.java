@@ -6,7 +6,7 @@ import org.openqa.selenium.support.How;
 
 public class InboxObjects {
 
-    @FindBy(how = How.XPATH,using = "//*[contains(text(), 'Account manager')]")
+    @FindBy(how = How.XPATH,using = "//button//*[contains(text(), 'Account manager')]")
     public WebElement showLogoutButton;
 
     @FindBy(how = How.XPATH,using = "//*[contains(text(), 'Sign out')]")

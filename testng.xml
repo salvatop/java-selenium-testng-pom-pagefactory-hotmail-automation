@@ -36,7 +36,7 @@
                     <parameter name = "username" value="automatedtestinjava@hotmail.com"/>
                     <parameter name = "password" value="123.Password.123"/>
                     <parameter name = "subject" value="Acumatica"/>
-                    <include name="sendEmail"/>
+                    <exclude name="testReceiveEmail"/>
                 </methods>
             </class>
         </classes>

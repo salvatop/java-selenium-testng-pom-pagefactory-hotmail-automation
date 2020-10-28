@@ -23,12 +23,20 @@ public class InboxPage {
     }
 
     public void logout(){
+        System.out.println("Click on the account manager button");
         wait.until(ExpectedConditions.elementToBeClickable(inboxObjects.showLogoutButton)).click();
+        System.out.println("Sign out!");
         wait.until(ExpectedConditions.elementToBeClickable(inboxObjects.logoutButton)).click();
     }
 
     public boolean verifyMessageWithSubjectIsReceived(String subject){
         String xpath = "//*[contains(text()," + "'" + subject + "'" + ")]";
-        return driver.findElements(By.xpath(xpath)).size() != 0;
+        if(driver.findElements(By.xpath(xpath)).size() != 0) {
+            System.out.println("Message with subject " + subject + " exists!");
+            return true;
+        } else {
+            System.out.println("Message not found!");
+            return false;
+        }
     }
 }

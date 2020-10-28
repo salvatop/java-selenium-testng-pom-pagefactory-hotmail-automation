@@ -43,8 +43,11 @@ public class InboxPageTest {
     @Test
     @Parameters({"username", "password", "subject"})
     public void testReceiveEmail(String username, String password, String subject) {
+        System.out.println("Login");
         loginPage.login(username, password);
+        System.out.println("Go to sent message folder");
         driver.get(sentPage.SENT_URL);
+        System.out.println("Verify if the massage with the expected subject is present");
         Assert.assertTrue(inboxPage.verifyMessageWithSubjectIsReceived(subject));
         inboxPage.logout();
     }
