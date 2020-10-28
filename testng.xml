@@ -1,0 +1,32 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name = "AcumaticaSuite">
+    <parameter name = "browser" value="chrome"/>
+    <test name = "Test Login" parallel="false" preserve-order="true">
+        <classes>
+            <class name = "LoginPageTest">
+                    <methods>
+                        <parameter name = "username" value="automatedtestinjava@hotmail.com"/>
+                        <parameter name = "password" value="123.Password.123"/>
+                         <include name="testLoginWithCorrectCredentials"/>
+                    </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name = "Send Email" parallel="false" preserve-order="true">
+        <classes>
+            <class name = "SentPageTest">
+                <methods>
+                    <parameter name = "username" value="automatedtestinjava@hotmail.com"/>
+                    <parameter name = "password" value="123.Password.123"/>
+                    <parameter name = "subject" value="test"/>
+                    <parameter name = "body" value="this is the body"/>
+                    <include name="sendEmail"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
+
