@@ -41,7 +41,7 @@ To include or exlude a test from the test suite just change the value ton includ
 
 
 **Known Issues**
-The actual configuration allow to run a single test when run from command line, to workaround the problem it's possible to tun direclty the tesngn.xml from any moder IDE like the picture below
+The actual configuration allow to run a single test when run from command line, to workaround the problem it's possible to tun direclty the tesngn.xml from any modern IDE like the picture below
 
 ![screenshoot](images/Screenshoot.png)
 
