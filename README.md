@@ -10,7 +10,9 @@ The program use of page object model and page factory design patterns, and it ha
   - Tests layer – implements different classes with actual tests that interact with the browser through the PageObjects/WebElements layer;
 
 All configuration data (e.g. web driver parameters, mail service web-interface address,user credentials, etc.) are be stored in the  testng.xml configuration file;
+
 The program allowto run test them separately by modifying the configuration file;
+
 All exceptions (e.g. invalid mail service web-interface address, invalid password or username, etc.) are handled to prevent abnormal program termination;
 
 The program can an executed through the command-line interface with the configuration file passed as an argument;
@@ -40,7 +42,7 @@ To include or exlude a test from the test suite just change the value ton includ
 
 **Known Issues**
 The actual configuration allow to run a single test when run from command line, to workaround the problem it's possible to tun direclty the tesngn.xml from any moder IDE like the picture below
-
+![screenshoot](images/Screenshoot.png)
 
 **Improvment Needed**
 - Implement groups to have a better control of the test suite to run
