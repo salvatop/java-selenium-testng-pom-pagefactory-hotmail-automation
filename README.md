@@ -21,7 +21,7 @@ The program can be executed through the command-line interface with the configur
 
 **Logging**
 When logging is enabled it will generate a text file with the same name of the test class in the root directory of the progect.
-To disable logging change the value to false of: ```<parameter name = "isFileLoggerEnabled" value="true"/>``` in the *testng.xml*.
+To disable logging change the value to **false** of: ```<parameter name = "isFileLoggerEnabled" value="true"/>``` in the *testng.xml*.
 
 **Browser**
 To to use different browsers just change the value of: ```<parameter name = "browser" value="chrome"/>``` to **firefox** or **chrome**. 
