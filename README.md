@@ -21,10 +21,10 @@ The program can an executed through the command-line interface with the configur
 
 **Logging**
 When logging is enabled it will generate a text file with the same name of the test class in the root directory of the progect.
-To disable logging change the value to false of:  <parameter name = "isFileLoggerEnabled" value="true"/> in the testng.xml.
+To disable logging change the value to false of: *<parameter name = "isFileLoggerEnabled" value="true"/>* in the testng.xml.
 
-**Browser*
-To to use different browsers just change the value of <parameter name = "browser" value="chrome"/> to firefox or chrome. 
+**Browser**
+To to use different browsers just change the value of: *<parameter name = "browser" value="chrome"/>* to firefox or chrome. 
 
 **Enable/Disable Tests**
 To include or exlude a test from the test suite just change the value ton include/exlude accordingly.
@@ -42,6 +42,7 @@ To include or exlude a test from the test suite just change the value ton includ
 
 **Known Issues**
 The actual configuration allow to run a single test when run from command line, to workaround the problem it's possible to tun direclty the tesngn.xml from any moder IDE like the picture below
+
 ![screenshoot](images/Screenshoot.png)
 
 **Improvment Needed**
