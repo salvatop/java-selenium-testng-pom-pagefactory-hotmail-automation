@@ -57,10 +57,10 @@ public class SentPageTest {
     }
 
     @Test(groups="send")
-    @Parameters({"username", "password", "subject", "body", "accountUrl", "inboxUrl"})
-    public void sendEmail(String username, String password, String subject, String body, String accountUrl, String inboxUrl) {
+    @Parameters({"username", "password", "subject", "body", "accountUrl", "inboxUrl", "loginUrl"})
+    public void sendEmail(String username, String password, String subject, String body, String accountUrl, String inboxUrl, String loginUrl) {
+        driver.get(loginUrl);
         loginPage.login(username, password);
-
         driver.get(accountUrl);
         wait.until(ExpectedConditions.visibilityOf(accountPage.getEmailWebElement()));
         Assert.assertEquals(accountPage.getEmailText(), username);
