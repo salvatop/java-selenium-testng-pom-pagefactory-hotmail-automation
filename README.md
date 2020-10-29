@@ -47,4 +47,5 @@ The actual configuration allow to run a single test when run from command line, 
 
 **Improvment Needed**
 - Implement groups to have a better control of the test suite to run
+- Add a baseTest class where to put common shared elements which should be extended by all the test classes
 - Improve logging and logging output 
