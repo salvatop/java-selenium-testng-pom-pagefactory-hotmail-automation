@@ -12,7 +12,7 @@
                         <parameter name = "password" value="123.Password.123"/>
                         <parameter name = "loginUrl" value="https://login.live.com/"/>
                         <parameter name = "accountUrl" value="https://account.microsoft.com/"/>
-                         <exclude name="testLoginWithCorrectCredentials"/>
+                         <include name="testLoginWithCorrectCredentials"/>
                     </methods>
             </class>
         </classes>
@@ -34,6 +34,7 @@
         </classes>
     </test>
 
+
     <test name = "Receive Email" parallel="false" preserve-order="true">
         <classes>
             <class name = "InboxPageTest">
@@ -43,7 +44,7 @@
                     <parameter name = "subject" value="Acumatica"/>
                     <parameter name = "loginUrl" value="https://login.live.com/"/>
                     <parameter name = "sentUrl" value="https://outlook.live.com/mail/0/sentitems"/>
-                    <include name="testReceiveEmail"/>
+                    <exclude name="testReceiveEmail"/>
                 </methods>
             </class>
         </classes>
